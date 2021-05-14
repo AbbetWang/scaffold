@@ -11,6 +11,11 @@ package com.abbet.scaffold;
 
 public class Kata02 {
     public int chop(int value, int[] values) {
+        for (int i = 0; i < values.length; i++) {
+            if(value == values[i]){
+                return i;
+            }
+        }
         return -1;
     }
 }
