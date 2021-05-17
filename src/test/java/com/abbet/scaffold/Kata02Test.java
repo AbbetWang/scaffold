@@ -27,26 +27,6 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
  */
 @SpringBootTest
 class Kata02Test {
-    @Test
-    void should_return_negative_when_empty_array() {
-        Kata02 kata02 = new Kata02();
-        int index = kata02.chop(3, new int[0]);
-        Assert.isTrue(-1 == index, "空数组不包含任何元素");
-    }
-
-    @Test
-    void should_return_negative_when_not_contain() {
-        Kata02 kata02 = new Kata02();
-        int index = kata02.chop(3, new int[]{1});
-        Assert.isTrue(-1 == index, "没有查到改任何元素");
-    }
-
-    @Test
-    void should_return_positive_when_contain() {
-        Kata02 kata02 = new Kata02();
-        int index = kata02.chop(1, new int[]{1});
-        Assert.isTrue(0 == index, "没有查找到指定元素");
-    }
     @ParameterizedTest
     @MethodSource("dataProvider")
     void when_container_return_index(int value, int index, List<Integer> input){
@@ -57,7 +37,24 @@ class Kata02Test {
     static Stream<Arguments> dataProvider(){
         return Stream.of(
                 arguments(3,3,Arrays.asList(0,1,2,3)),
-                arguments(5,3,Arrays.asList(0,1,2,5))
+                arguments(5,3,Arrays.asList(0,1,2,5)),
+                arguments(1,0,Arrays.asList(1)),
+                arguments(1,0,Arrays.asList(1,3,5)),
+                arguments(3,1,Arrays.asList(1,3,5)),
+                arguments(5,2,Arrays.asList(1,3,5)),
+                arguments(0,-1,Arrays.asList(1,3,5)),
+                arguments(2,-1,Arrays.asList(1,3,5)),
+                arguments(4,-1,Arrays.asList(1,3,5)),
+                arguments(6,-1,Arrays.asList(1,3,5)),
+                arguments(1,0,Arrays.asList(1,3,5,7)),
+                arguments(3,1,Arrays.asList(1,3,5,7)),
+                arguments(5,2,Arrays.asList(1,3,5,7)),
+                arguments(7,3,Arrays.asList(1,3,5,7)),
+                arguments(0,-1,Arrays.asList(1,3,5,7)),
+                arguments(2,-1,Arrays.asList(1,3,5,7)),
+                arguments(4,-1,Arrays.asList(1,3,5,7)),
+                arguments(6,-1,Arrays.asList(1,3,5,7)),
+                arguments(8,-1,Arrays.asList(1,3,5,7))
         );
     }
 }

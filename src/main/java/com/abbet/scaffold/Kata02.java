@@ -1,5 +1,7 @@
 package com.abbet.scaffold;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 /**
@@ -13,6 +15,7 @@ import java.util.List;
 
 public class Kata02 {
     // 学到接口的重要性,对外接口改变会导致依赖的客户全要重写
+    @Deprecated
     public int chop(int value, int[] values) {
         for (int i = 0; i < values.length; i++) {
             if(value == values[i]){
