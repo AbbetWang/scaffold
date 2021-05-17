@@ -24,9 +24,9 @@ public class Kata02 {
         }
         return -1;
     }
-    public int chop(int value, List valuse){
-        for (int i = 0; i < valuse.size(); i++) {
-            if(value == (Integer) valuse.get(i)){
+    public int chop(int value, List values){
+        for (int i = 0; i < values.size(); i++) {
+            if(value == (Integer) values.get(i)){
                 return i;
             }
         }
