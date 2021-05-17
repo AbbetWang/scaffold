@@ -1,8 +1,21 @@
 package com.abbet.scaffold;
 
+import org.assertj.core.internal.Numbers;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 /**
  * com.abbet.scaffold
@@ -34,5 +47,17 @@ class Kata02Test {
         int index = kata02.chop(1, new int[]{1});
         Assert.isTrue(0 == index, "没有查找到指定元素");
     }
-//    todo: 改造成多个测试用例输入
+    @ParameterizedTest
+    @MethodSource("dataProvider")
+    void when_container_return_index(int value, int index, List<Integer> input){
+        Kata02 kata02 = new Kata02();
+        int actual = kata02.chop(value,input );
+        Assert.isTrue(actual == index, "没有查找到指定元素");
+    }
+    static Stream<Arguments> dataProvider(){
+        return Stream.of(
+                arguments(3,3,Arrays.asList(0,1,2,3)),
+                arguments(5,3,Arrays.asList(0,1,2,5))
+        );
+    }
 }
