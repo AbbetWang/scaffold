@@ -30,9 +30,10 @@ class Kata02Test {
     @ParameterizedTest
     @MethodSource("dataProvider")
     void when_container_return_index(int value, int index, List<Integer> input){
-        Kata02 kata02 = new Kata02();
+        Kata02 kata02 = n
+        ew Kata02();
         int actual = kata02.chop(value,input );
-        Assert.isTrue(actual == index, "没有查找到指定元素");
+        assertEquals(index,actual,"应该返回指定的index");
     }
     static Stream<Arguments> dataProvider(){
         return Stream.of(
