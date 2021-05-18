@@ -30,8 +30,7 @@ class Kata02Test {
     @ParameterizedTest
     @MethodSource("dataProvider")
     void when_container_return_index(int value, int index, List<Integer> input){
-        Kata02 kata02 = n
-        ew Kata02();
+        Kata02 kata02 = new Kata02();
         int actual = kata02.chop(value,input );
         assertEquals(index,actual,"应该返回指定的index");
     }
